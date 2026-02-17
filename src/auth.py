@@ -33,3 +33,11 @@ def login_user(username, password):
     conn.close()
     
     return user
+
+def get_user_stats():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT username, email FROM users")
+    users = cursor.fetchall()
+    conn.close()
+    return users
